@@ -76,15 +76,15 @@ def scheduled_task():
   ) 
 	
 
-# scheduler.add_job(scheduled_task, 'cron', hour=8, minute=0)
-# scheduler.start()
+scheduler.add_job(scheduled_task, 'cron', hour=8, minute=0)
+scheduler.start()
 
-# @app.on_event("startup")
-# async def startup_event():
-#     print("Starting the scheduler...")
-#     scheduler.start()
+@app.on_event("startup")
+async def startup_event():
+    print("Starting the scheduler...")
+    scheduler.start()
 
-# @app.on_event("shutdown")
-# async def shutdown_event():
-#     print("Shutting down the scheduler...")
-#     scheduler.shutdown()
+@app.on_event("shutdown")
+async def shutdown_event():
+    print("Shutting down the scheduler...")
+    scheduler.shutdown()
