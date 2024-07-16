@@ -14,21 +14,22 @@ async def index(request: Request):
 
 @app.get('/api/siteList')
 async def AOIdata():
-	url = 'https://data.moenv.gov.tw/api/v2/aqx_p_432?language=zh&api_key=e1b238db-315d-4ddf-b7fb-cebd33b68c77'
-	site_list = []
-	try:
-		result = requests.get(url).json()['records']
-		for site in  result:
-			site_list.append(site['sitename'])
-		response_site_list = response_message_200_list(
-			data = site_list
+    url = 'https://data.moenv.gov.tw/api/v2/aqx_p_432?language=zh&api_key=e1b238db-315d-4ddf-b7fb-cebd33b68c77'
+    site_list = []
+    try:
+        result = requests.get(url).json()['records']
+        for site in  result:
+            site_name = site['county'] + site['sitename']
+            site_list.append(site_name)
+        response_site_list = response_message_200_list(
+            data = site_list
     )
-		return JSONResponse(status_code=200, content=response_site_list.dict())
-	except Exception as e:
-		response_error = response_message_error(
-			error = e
+        return JSONResponse(status_code=200, content=response_site_list.dict())
+    except Exception as e:
+        response_error = response_message_error(
+            error = e
     )
-		return JSONResponse(status_code=500, content=response_error.dict())
+        return JSONResponse(status_code=500, content=response_error.dict())
 
 
 @app.get('/api/site/{siteName}')
