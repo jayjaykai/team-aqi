@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>空氣品質監測</title>
-</head>
-<body>
-	
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>空氣品質監測</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <label for="station-select">測站名稱：</label>
+        <select id="station-select">
+          <option value="台北中正" selected>台北中正</option>
+        </select>
+        <button id="search-btn">查詢</button>
+      </div>
+      <div class="data-display">
+        <div class="data-item">
+          <span>測站名稱：</span><span id="station-name">台北中正</span>
+        </div>
+        <div class="data-item"><span>AQI：</span><span id="aqi">-</span></div>
+        <div class="data-item">
+          <span>PM2.5：</span><span id="pm25">-</span>
+        </div>
+        <div class="data-item"><span>PM10：</span><span id="pm10">-</span></div>
+        <div class="data-item"><span>臭氧：</span><span id="o3">-</span></div>
+        <div class="data-item">
+          <span>出門建議：</span><span id="advice">-</span>
+        </div>
+        <div class="data-item">
+          <span>最新測量時間：</span><span id="latest-time">-</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/script_test.js"></script>
+  </body>
 </html>
