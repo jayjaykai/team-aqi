@@ -1,5 +1,7 @@
 import requests
-from model import bot
+import datetime
+from apscheduler.schedulers.blocking import BlockingScheduler
+from model.bot import *
 from model.response_response import* 
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, JSONResponse
@@ -29,7 +31,6 @@ async def AOIdata():
 			error = e
     )
 		return JSONResponse(status_code=500, content=response_error.dict())
-
 
 @app.get('/api/site/{siteName}')
 async def site_data(siteName):
@@ -62,3 +63,27 @@ async def site_data(siteName):
     )
 		return JSONResponse(status_code=500, content=response_error.dict())
 
+
+scheduler = BlockingScheduler()
+def scheduled_task():
+	now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+	content = f'當前時間：{now} '
+	send_discord_message(
+    content,
+    username='EMO',
+    avatar_url='https://training.pada-x.com/imgs/head1.jpg'
+  ) 
+	
+
+scheduler.add_job(scheduled_task, 'cron', hour=8, minute=0)
+scheduler.start()
+
+@app.on_event("startup")
+async def startup_event():
+    print("Starting the scheduler...")
+    scheduler.start()
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    print("Shutting down the scheduler...")
+    scheduler.shutdown()

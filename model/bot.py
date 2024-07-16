@@ -1,10 +1,13 @@
 import requests
 
-def send_discord_message(content):
+def send_discord_message(content, username='WeHelp-Robot', avatar_url=None):
     webhook_url = 'https://discord.com/api/webhooks/1162404320399085690/y6pNTIyURc4-ftZIicqF49uzwNTF70bRw_9D1QyVrmxzbwagnXXX-HNW2E6QvzUJVUVS'
     message = {
-        'content': content
+        'content': content,
+        'username': username
     }
+    if avatar_url:
+        message['avatar_url'] = avatar_url
 
     response = requests.post(webhook_url, json=message)
 
