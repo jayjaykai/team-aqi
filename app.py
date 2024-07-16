@@ -46,6 +46,8 @@ async def site_data(siteName):
 			site_dict[site_name]['PM10'] = site['pm10']
 			site_dict[site_name]['o3'] = site['o3']
 			site_dict[site_name]['status'] = site['status']
+			site_dict[site_name]['publishtime'] = site['publishtime']
+			
 		response_data = site_dict[siteName] 
 		response_site_list = response_message_200_dict(
 			data = response_data
