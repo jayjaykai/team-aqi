@@ -38,22 +38,27 @@ async def site_data(siteName):
 		result = requests.get(url).json()['records']
 		site_dict = {}
 		for site in  result:
-			site_name = site['sitename']
+			site_name = site['county'] + site['sitename']
 			site_dict[site_name]= {}
+			site_dict[site_name]['county'] = site['county']
 			site_dict[site_name]['sitename'] = site['sitename']
 			site_dict[site_name]['AQI'] = site['aqi']
 			site_dict[site_name]['PM2.5'] = site['pm2.5']
 			site_dict[site_name]['PM10'] = site['pm10']
 			site_dict[site_name]['o3'] = site['o3']
 			site_dict[site_name]['status'] = site['status']
+			site_dict[site_name]['publishtime'] = site['publishtime']
+			
 		response_data = site_dict[siteName] 
 		response_site_list = response_message_200_dict(
 			data = response_data
     )
 		return JSONResponse(status_code=200, content=response_site_list.dict())
 	except Exception as e:
+		print(e)
+		message = str(e)
 		response_error = response_message_error(
-			error = e
+			error = message
     )
 		return JSONResponse(status_code=500, content=response_error.dict())
 
