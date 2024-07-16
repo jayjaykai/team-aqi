@@ -42,8 +42,7 @@ async def site_data(siteName):
 		for site in  result:
 			site_name = site['county'] + site['sitename']
 			site_dict[site_name]= {}
-			site_dict[site_name]['county'] = site['county']
-			site_dict[site_name]['sitename'] = site['sitename']
+			site_dict[site_name]['sitename'] = site['sitename'] + site['county']
 			site_dict[site_name]['AQI'] = site['aqi']
 			site_dict[site_name]['PM2.5'] = site['pm2.5']
 			site_dict[site_name]['PM10'] = site['pm10']
