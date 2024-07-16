@@ -21,7 +21,8 @@ async def AOIdata():
 	try:
 		result = requests.get(url).json()['records']
 		for site in  result:
-			site_list.append(site['sitename'])
+			site_name = site['county'] + site['sitename']
+			site_list.append(site_name)
 		response_site_list = response_message_200_list(
 			data = site_list
     )
@@ -75,15 +76,15 @@ def scheduled_task():
   ) 
 	
 
-scheduler.add_job(scheduled_task, 'cron', hour=8, minute=0)
-scheduler.start()
+# scheduler.add_job(scheduled_task, 'cron', hour=8, minute=0)
+# scheduler.start()
 
-@app.on_event("startup")
-async def startup_event():
-    print("Starting the scheduler...")
-    scheduler.start()
+# @app.on_event("startup")
+# async def startup_event():
+#     print("Starting the scheduler...")
+#     scheduler.start()
 
-@app.on_event("shutdown")
-async def shutdown_event():
-    print("Shutting down the scheduler...")
-    scheduler.shutdown()
+# @app.on_event("shutdown")
+# async def shutdown_event():
+#     print("Shutting down the scheduler...")
+#     scheduler.shutdown()
