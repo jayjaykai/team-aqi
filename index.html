@@ -277,7 +277,167 @@ box-sizing: border-box;
   font-weight: 800px;}
 
 
+/* 小螢幕 */
+@media (min-width: 360px) and (max-width: 488px) {
+    /* 為前三個 .inner-frame-right1in 元素設置 margin-right */
+    .inner-frame-right1in:not(:last-child) {
+    margin-bottom: 20px;
+    margin-right: 0px;
+  }
 
+
+  /* 外框 (outer-frame控制面板位置) */
+  .outer-frame {
+    width: 100%;
+  }
+
+  /* 標題框 (文字) */
+  .welcome {
+    margin-top: 50px;
+    font-size: 50px; /* 根據需要調整字體大小 */
+  }
+
+  /* 中框 (middle-frame面板套色) */
+  .middle-frame {
+    width: 90%;
+    height: 1000px;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
+  .header {
+
+    margin-bottom: 20px;
+  }
+
+  .data-display {
+    margin-top: 20px;
+  }
+
+  #station-select {
+    height: 60px;
+    width: 200px;
+
+  }
+
+
+
+
+
+
+
+
+  .inner-frame-left {
+    margin-top: 20px;
+    margin-left: 0px;
+    width: 250px;
+    height: 250px;
+
+
+  }
+
+
+
+  #aqi {
+    font-size: 100px;
+  }
+
+
+  .inner-frame-right {
+    margin-top: 20px;
+    margin-left: 0px;
+    width: 90%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+    
+  }
+
+  .inner-frame-right1 {
+    margin-top: 0px;
+    width: 150px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .inner-frame-right1in {
+    width: 100px;
+
+    height: 100px;
+
+  }
+
+  .inner-frame-right2 {
+    margin-top: 0px;
+    width: 80px;
+    height: 350px;
+
+    background-color: rgb(255, 255, 255, 0.5);
+    border-radius: 40px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    color: #333;
+    margin-right: 20px;
+  }
+
+
+
+
+
+
+
+  .data-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  .data-line1,
+  .data-line2,
+  .data-line3{
+    font-size: 16px;
+  }
+
+  .data-line2
+{
+    font-size: 8px;
+  }
+
+  /* .data-line3{
+  text-align: center; 
+
+} */
+
+  #pm10,
+  #pm25,
+  #o3 {
+    font-size: 30px;
+    font-weight: 800px;
+  }
+
+  #advice {
+    font-size: 40px;
+    font-weight: 800px;
+  }
+}
 
 
     </style>
