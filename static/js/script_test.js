@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("/api/siteList") // 使用實際的API URL
     .then((response) => response.json())
     .then((data) => {
+      stationSelect.textContent="";
+
       // console.log(data.data); 
       data.data.forEach((station) => {
         const option = document.createElement("option");

@@ -1,6 +1,8 @@
+import asyncio
 import requests
 import datetime
-from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
 from model.bot import *
 from model.response_response import* 
 from fastapi import FastAPI, Request
@@ -63,27 +65,97 @@ async def site_data(siteName):
     )
 		return JSONResponse(status_code=500, content=response_error.dict())
 
+# Create Scheduler
+scheduler = BackgroundScheduler()
 
-scheduler = BlockingScheduler()
+# Define the executing time of the schedule
 def scheduled_task():
-	now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-	content = f'當前時間：{now} '
-	send_discord_message(
-    content,
-    username='EMO',
-    avatar_url='https://training.pada-x.com/imgs/head1.jpg'
-  ) 
-	
+	siteName = '臺北市中山'
+	url = 'https://data.moenv.gov.tw/api/v2/aqx_p_432?language=zh&api_key=e1b238db-315d-4ddf-b7fb-cebd33b68c77'
+	try:
+		result = requests.get(url).json()['records']
+		site_dict = {}
+		for site in  result:
+			site_name = site['county'] + site['sitename']
+			site_dict[site_name]= {}
+			site_dict[site_name]['sitename'] = site['sitename'] + site['county']
+			site_dict[site_name]['AQI'] = site['aqi']
+			site_dict[site_name]['PM2.5'] = site['pm2.5']
+			site_dict[site_name]['PM10'] = site['pm10']
+			site_dict[site_name]['o3'] = site['o3']
+			site_dict[site_name]['status'] = site['status']
+			site_dict[site_name]['publishtime'] = site['publishtime']
+			
+		data = site_dict[siteName] 
+		# print(data)
+	except Exception as e:
+		print(e)
 
-scheduler.add_job(scheduled_task, 'cron', hour=8, minute=0)
-scheduler.start()
+	now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+	print(f"Scheduled task executed at {now}")
+	content = f'當前時間：{now}\n'
+	send_discord_message(
+			content,
+			siteName,
+			AQI=data["AQI"],
+			PM25=data["PM2.5"],
+			PM10=data["PM10"],
+			O3=data["o3"],
+			username='EMO',
+			avatar_url='https://training.pada-x.com/imgs/head1.jpg'
+	)
+
+# Use CronTrigger to set up time in 7:30 am everyday
+trigger = CronTrigger(hour=7, minute=30)
+scheduler.add_job(scheduled_task, trigger)
 
 @app.on_event("startup")
 async def startup_event():
-    print("Starting the scheduler...")
-    scheduler.start()
+    if not scheduler.running:
+        print("Starting the scheduler...")
+        scheduler.start()
 
 @app.on_event("shutdown")
 async def shutdown_event():
     print("Shutting down the scheduler...")
     scheduler.shutdown()
+
+
+# def test():
+# 	siteName = '臺北市中山'
+# 	url = 'https://data.moenv.gov.tw/api/v2/aqx_p_432?language=zh&api_key=e1b238db-315d-4ddf-b7fb-cebd33b68c77'
+# 	try:
+# 		result = requests.get(url).json()['records']
+# 		site_dict = {}
+# 		for site in  result:
+# 			site_name = site['county'] + site['sitename']
+# 			site_dict[site_name]= {}
+# 			site_dict[site_name]['sitename'] = site['sitename'] + site['county']
+# 			site_dict[site_name]['AQI'] = site['aqi']
+# 			site_dict[site_name]['PM2.5'] = site['pm2.5']
+# 			site_dict[site_name]['PM10'] = site['pm10']
+# 			site_dict[site_name]['o3'] = site['o3']
+# 			site_dict[site_name]['status'] = site['status']
+# 			site_dict[site_name]['publishtime'] = site['publishtime']
+			
+# 		data = site_dict[siteName] 
+# 		print(data)
+# 	except Exception as e:
+# 		print(e)
+
+# 	now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+# 	print(f"Scheduled task executed at {now}")
+# 	content = f'當前時間：{now}\n'
+# 	# response = site_data(site_name)
+# 	# data = response
+# 	send_discord_message(
+# 			content,
+# 			siteName,
+# 			AQI=data["AQI"],
+# 			PM25=data["PM2.5"],
+# 			PM10=data["PM10"],
+# 			O3=data["o3"],
+# 			username='EMO',
+# 			avatar_url='https://training.pada-x.com/imgs/head1.jpg'
+# 	)
+# test()
