@@ -115,9 +115,10 @@ scheduler.add_job(scheduled_task, trigger)
 
 @app.on_event("startup")
 async def startup_event():
-    if not scheduler.running:
-        print("Starting the scheduler...")
-        scheduler.start()
+	start_background_thread()
+	if not scheduler.running:
+		print("Starting the scheduler...")
+		scheduler.start()
 
 @app.on_event("shutdown")
 async def shutdown_event():
@@ -136,6 +137,13 @@ def send_request():
         except requests.exceptions.RequestException as e:
             print(f"Request error: {e}")
         time.sleep(300)
+
+def start_background_thread():
+    print("Starting background thread...")  # 确认后台线程启动日志
+    request_thread = threading.Thread(target=send_request)
+    request_thread.daemon = True  # 确保线程在主进程退出时自动退出
+    request_thread.start()
+    print("Background thread started.")
 
 if __name__ == "__main__":
 	print("Starting request thread...")  # 添加日志信息确认线程启动
