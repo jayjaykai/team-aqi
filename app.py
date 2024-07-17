@@ -138,8 +138,11 @@ def send_request():
         time.sleep(300)
 
 if __name__ == "__main__":
+	print("Starting request thread...")  # 添加日志信息确认线程启动
 	request_thread = threading.Thread(target=send_request)
+	request_thread.daemon = True  # 确保线程在主进程退出时自动退出
 	request_thread.start()
+
 	port = int(os.environ.get("PORT", 8000))
 	uvicorn.run(app, host="0.0.0.0", port=port)
 # def test():
