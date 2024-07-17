@@ -116,7 +116,7 @@ body {
 }
 
 #station-name {
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 800px;
 }
 
@@ -190,7 +190,7 @@ body {
 }
 
 .data-line1 {
-  font-size: 40px;
+  font-size: 36px;
   text-align: left;
 }
 
@@ -207,7 +207,7 @@ body {
 }
 
 #advice {
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 800px;
 }
 
@@ -241,7 +241,7 @@ body {
   }
 
   #aqi {
-    font-size: 100px;
+    font-size: 120px;
   }
 
   .inner-frame-right {
@@ -276,7 +276,7 @@ body {
   }
 
   .data-line1 {
-    font-size: 28px;
+    font-size: 30px;
   }
 
   .data-line2 {
@@ -287,6 +287,15 @@ body {
   #pm25,
   #o3 {
     font-size: 45px;
+    font-weight: 800px;
+  }
+
+  #station-name {
+    font-size: 30px;
+    font-weight: 800px;
+  }
+  #advice {
+    font-size: 30px;
     font-weight: 800px;
   }
 }
@@ -409,6 +418,10 @@ body {
     font-size: 8px;
   }
 
+  #station-name {
+    font-size: 25px;
+    font-weight: 800px;
+  }
   #pm10,
   #pm25,
   #o3 {
@@ -417,7 +430,9 @@ body {
   }
 
   #advice {
-    font-size: 40px;
+    font-size: 25px;
     font-weight: 800px;
+    writing-mode: vertical-rl; /* 設置文字垂直排列 */
+    text-orientation: upright; /* 保持文字直立 */
   }
 }
