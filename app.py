@@ -1,5 +1,7 @@
 import asyncio
 import os
+import threading
+import time
 import uvicorn
 import requests
 import datetime
@@ -122,9 +124,24 @@ async def shutdown_event():
     print("Shutting down the scheduler...")
     scheduler.shutdown()
 
+def send_request():
+    url = 'https://team-aqi.onrender.com/api/site/%E5%9F%BA%E9%9A%86%E5%B8%82%E5%9F%BA%E9%9A%86'
+    while True:
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                print(f"Request successful: {response.status_code}")
+            else:
+                print(f"Request failed: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            print(f"Request error: {e}")
+        time.sleep(300)
+
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+	request_thread = threading.Thread(target=send_request)
+	request_thread.start()
+	port = int(os.environ.get("PORT", 8000))
+	uvicorn.run(app, host="0.0.0.0", port=port)
 # def test():
 # 	siteName = '臺北市中山'
 # 	url = 'https://data.moenv.gov.tw/api/v2/aqx_p_432?language=zh&api_key=e1b238db-315d-4ddf-b7fb-cebd33b68c77'
