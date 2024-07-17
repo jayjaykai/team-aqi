@@ -116,8 +116,16 @@ body {
 }
 
 #station-name {
-  font-size: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  font-size: 36px;
   font-weight: 800px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 可選，用來在溢出時顯示省略號 */
+  width: 330px;
+  text-align: center; /* 文字置中 */
 }
 
 #aqi {
@@ -190,7 +198,7 @@ body {
 }
 
 .data-line1 {
-  font-size: 40px;
+  font-size: 36px;
   text-align: left;
 }
 
@@ -207,7 +215,7 @@ body {
 }
 
 #advice {
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 800px;
 }
 
@@ -241,7 +249,7 @@ body {
   }
 
   #aqi {
-    font-size: 100px;
+    font-size: 120px;
   }
 
   .inner-frame-right {
@@ -276,7 +284,7 @@ body {
   }
 
   .data-line1 {
-    font-size: 28px;
+    font-size: 30px;
   }
 
   .data-line2 {
@@ -289,10 +297,34 @@ body {
     font-size: 45px;
     font-weight: 800px;
   }
+
+  #station-name {
+    width: 260px;
+
+    text-align: center; /* 文字置中 */
+    font-size: 30px;
+    font-weight: 800px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  #advice {
+    font-size: 30px;
+    font-weight: 800px;
+  }
 }
 
 /* 小螢幕 */
 @media (min-width: 360px) and (max-width: 539px) {
+  /* 外框 (outer-frame控制面板位置) */
+  .outer-frame {
+    width: 100%;
+    min-height: 100vh; /* 使外框最小高度為視窗高度 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto; /* 允許垂直滾動 */
+  }
   /* 為前三個 .inner-frame-right1in 元素設置 margin-right */
   .inner-frame-right1in:not(:last-child) {
     margin-bottom: 20px;
@@ -302,6 +334,8 @@ body {
   /* 外框 (outer-frame控制面板位置) */
   .outer-frame {
     width: 100%;
+    min-height: 100vh;
+    overflow-y: auto; /* 啟用垂直滾動 */
   }
 
   /* 標題框 (文字) */
@@ -313,8 +347,8 @@ body {
   /* 中框 (middle-frame面板套色) */
   .middle-frame {
     width: 90%;
-    height: 1000px;
-
+    min-height: 660px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: left;
     align-items: center;
@@ -349,7 +383,7 @@ body {
     margin-top: 20px;
     margin-left: 0px;
     width: 90%;
-    height: 250px;
+    height: 350px;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -409,6 +443,15 @@ body {
     font-size: 8px;
   }
 
+  #station-name {
+    width: 230px;
+    font-size: 25px;
+    font-weight: 800px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    text-align: center; /* 文字置中 */
+  }
   #pm10,
   #pm25,
   #o3 {
@@ -417,7 +460,9 @@ body {
   }
 
   #advice {
-    font-size: 40px;
+    font-size: 25px;
     font-weight: 800px;
+    writing-mode: vertical-rl; /* 設置文字垂直排列 */
+    text-orientation: upright; /* 保持文字直立 */
   }
 }
