@@ -1,11 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>空氣品質監測</title>
-</head>
-<body>
-	
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>空氣品質監測</title>
+    <!-- <link rel="stylesheet" href="static/css/styles.css" /> -->
+
+    <style>
+
+body {
+        font-family: "標楷體", "Times New Roman", serif;
+        margin: 0;
+        padding: 0;
+        background: url("/static/images/background.jpg") no-repeat center center
+          fixed;
+        background-size: cover;
+      }
+
+      /* 外框 (outer-frame控制面板位置) */
+      .outer-frame {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* 標題框 (文字) */
+      .welcome {
+        margin-bottom: 20px;
+        margin-right: 20px;
+        margin-left: 20px;
+
+        font-size: 60px; /* 根據需要調整字體大小 */
+        color: white; /* 設置文字顏色為白色 */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 添加陰影效果 */
+      }
+
+      /* 中框 (middle-frame面板套色) */
+      .middle-frame {
+        margin-bottom: 20px;
+        margin-right: 20px;
+        margin-left: 20px;
+        width: 1160px;
+        height: 450px;
+
+        background-color: rgb(255, 255, 255, 0.5);
+        border-radius: 40px;
+        box-sizing: border-box;
+
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* 內框 (inner-frame面板粗邊) */
+      /* .inner-frame {
+        width: 1140px; 
+        height: 570px;
+        padding: 20px; 
+        border: 5px solid rgba(128, 128, 128, 0.3); 
+
+        border-radius: 40px;
+        box-sizing: border-box;
+      } */
+
+      /* 最內框 (container面板細邊) */
+      /* .container {
+        width: 100%;
+        padding: 30px;
+        border: 3px solid rgba(128, 128, 128, 0.5); 
+        border-radius: 10px;
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 0.5);
+      } */
+
+      .header {
+        font-size: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+
+      .data-display {
+        margin-top: 20px;
+      }
+/* 
+      .data-item {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+      } */
+
+      #station-select {
+        height: 60px;
+        width: 300px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      #station-select:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .header select {
+        font-family: "標楷體", "Times New Roman", serif;
+        font-size: 30px;
+        text-align: center;
+        color: #333; /* 修改input文字顏色 */
+      }
+
+      .header button {
+        height: 60px;
+        width: 100px;
+        font-family: "標楷體", "Times New Roman", serif;
+        font-size: 25px;
+        text-align: center;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background-color: rgba(64, 175, 223, 0.542);
+        border: none;
+        font-weight: 800;
+        color: white; /* 修改button文字顏色 */
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .header button:hover {
+        background-color: rgba(64, 175, 223);
+      }
+
+      .inner-frame-left {
+margin-left: 50px;
+        width: 350px;
+        height: 350px;
+
+        background-color: rgb(255, 255, 255, 0.5);
+        border-radius: 40px;
+        box-sizing: border-box;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+        color: #333; 
+
+      }
+
+      #station-name{
+font-size: 40px;
+font-weight: 800px;
+}
+
+#aqi{
+font-size: 150px;
+}
+.AQI{
+  font-size: 20px;
+}
+
+.inner-frame-right {
+margin-left: 30px;
+        width: 660px;
+        height: 350px;
+
+
+      }
+
+      .inner-frame-right1 {
+
+        width: 680px;
+        height: 200px;
+        display: flex;
+justify-content: center;
+align-items: center;
+
+
+      }
+
+
+
+
+
+
+      .inner-frame-right1in {
+width: calc(620px/3);
+
+height: 200px;
+
+background-color: rgb(255, 255, 255, 0.5);
+border-radius: 40px;
+box-sizing: border-box;
+
+display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; 
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+color: #333; 
+
+}
+
+      .inner-frame-right2 {
+margin-top: 30px;
+width: 680px;
+height: 120px;
+
+background-color: rgb(255, 255, 255, 0.5);
+border-radius: 40px;
+box-sizing: border-box;
+
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column; 
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+color: #333; 
+
+}
+
+/* 為前三個 .inner-frame-right1in 元素設置 margin-right */
+.inner-frame-right1in:not(:last-child) {
+    margin-right: 30px;
+}
+
+
+
+.data-item{
+
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+
+box-sizing: border-box;
+
+
+}
+
+
+
+
+.data-line1{
+  /* margin-left: 20px; */
+  font-size: 40px;
+  text-align: left;
+}
+
+.data-line2{
+  /* margin-left: 20px; */
+  font-size: 20px;
+  text-align: left; 
+
+}
+
+/* .data-line3{
+  text-align: center; 
+
+} */
+
+#pm10,
+#pm25,
+#o3{  font-size: 80px;
+  font-weight: 800px;}
+
+
+
+  #advice{  font-size: 40px;
+  font-weight: 800px;}
+
+
+
+
+
+    </style>
+
+    <script></script>
+  </head>
+  <body>
+    <div class="outer-frame">
+      <div class="welcome">即時空氣品質指標概況</div>
+      <div class="header">
+        <!-- <label for="station-select">測站名稱：</label> -->
+        <select id="station-select">
+          <option value="基隆市基隆" selected>基隆市基隆</option>
+        </select>
+        <button id="search-btn">查詢</button>
+      </div>
+
+      <!-- <div class="container"> -->
+        <div class="middle-frame">
+            <div class="inner-frame-left">
+                <div class="data-item">
+                  <!-- <span>測站名稱：</span> -->
+                  <span id="station-name">基隆市基隆</span>
+                </div>
+                <div class="data-item">
+                  <span id="aqi">0</span>
+                </div>
+
+                <div class="AQI">空氣污染指標AQI</div>
+
+                <div class="data-item">
+                  <!-- <span>最新測量時間：</span> -->
+                  <span id="latest-time">2024/07/17</span>
+                </div>
+              </div>
+
+
+            <div class="inner-frame-right">
+            <div class="inner-frame-right1">
+              <div class="inner-frame-right1in">
+                <div class="data-item">
+                  <div class="data-line1">PM2.5</div>
+
+                  <div class="data-line3"><span id="pm25">0</span></div>
+                  <div class="data-line2">細懸浮微粒 (μg/m3)</div>
+                </div>
+              </div>
+              <div class="inner-frame-right1in">
+                <div class="data-item">
+                  <div class="data-line1">PM10</div>
+
+                  <div class="data-line3"><span id="pm10">0</span></div>
+                  <div class="data-line2">懸浮微粒 (μg/m3)</div>
+                  <!-- <span>PM10：</span><span id="pm10">-</span> -->
+                </div>
+              </div>
+              <div class="inner-frame-right1in">
+                <div class="data-item">
+                  <div class="data-line1">O3</div>
+
+                  <div class="data-line3"><span id="o3">0</span></div>
+                  <div class="data-line2">臭氧 (ppb)</div>
+                  <!-- <span>臭氧：</span><span id="o3">-</span> -->
+                </div>
+              </div>
+            </div>
+
+
+            <div class="inner-frame-right2">
+              <div class="data-item">
+                <span id="advice">良好</span>
+              </div>
+            </div>
+          </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script src="static/js/script_test.js"></script> -->
+  </body>
 </html>

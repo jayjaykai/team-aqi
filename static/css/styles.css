@@ -1,0 +1,25 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data-display {
+  margin-top: 20px;
+}
+
+.data-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
