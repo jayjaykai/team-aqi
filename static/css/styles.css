@@ -116,6 +116,8 @@ body {
 }
 
 #station-name {
+  margin-left: 5px;
+  margin-right: 5px;
   font-size: 36px;
   font-weight: 800px;
 }
@@ -293,6 +295,8 @@ body {
   #station-name {
     font-size: 30px;
     font-weight: 800px;
+    margin-left: 5px;
+    margin-right: 5px;
   }
   #advice {
     font-size: 30px;
@@ -421,6 +425,8 @@ body {
   #station-name {
     font-size: 25px;
     font-weight: 800px;
+    margin-left: 5px;
+    margin-right: 5px;
   }
   #pm10,
   #pm25,
