@@ -190,21 +190,14 @@ body {
 }
 
 .data-line1 {
-  /* margin-left: 20px; */
   font-size: 40px;
   text-align: left;
 }
 
 .data-line2 {
-  /* margin-left: 20px; */
   font-size: 20px;
   text-align: left;
 }
-
-/* .data-line3{
-text-align: center; 
-
-} */
 
 #pm10,
 #pm25,
@@ -218,8 +211,88 @@ text-align: center;
   font-weight: 800px;
 }
 
+/* 大螢幕 */
+@media (min-width: 1200px) {
+}
+
+/* 中螢幕 */
+@media (min-width: 540px) and (max-width: 1199px) {
+  /* 中框 (middle-frame面板套色) */
+  .middle-frame {
+    width: 90%;
+    height: 600px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  /* 標題框 (文字) */
+  .welcome {
+    margin-bottom: 30px;
+    font-size: 50px; /* 根據需要調整字體大小 */
+  }
+
+  .inner-frame-left {
+    margin-top: 30px;
+    margin-left: 0px;
+    width: 300px;
+    height: 300px;
+  }
+
+  #aqi {
+    font-size: 100px;
+  }
+
+  .inner-frame-right {
+    margin-top: 30px;
+    margin-left: 0px;
+    width: 420px;
+    height: 260px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .inner-frame-right1 {
+    margin-top: 0px;
+    width: 100%;
+    height: 120px;
+  }
+
+  .inner-frame-right1in {
+    width: 120px;
+
+    height: 120px;
+  }
+
+  .inner-frame-right2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 80%;
+    height: 80px;
+  }
+
+  .data-line1 {
+    font-size: 28px;
+  }
+
+  .data-line2 {
+    font-size: 10px;
+  }
+
+  #pm10,
+  #pm25,
+  #o3 {
+    font-size: 45px;
+    font-weight: 800px;
+  }
+}
+
 /* 小螢幕 */
-@media (min-width: 360px) and (max-width: 488px) {
+@media (min-width: 360px) and (max-width: 539px) {
   /* 為前三個 .inner-frame-right1in 元素設置 margin-right */
   .inner-frame-right1in:not(:last-child) {
     margin-bottom: 20px;
