@@ -5,31 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>空氣品質監測</title>
     <link rel="stylesheet" href="static/css/styles.css" />
+
+
+      
   </head>
   <body>
-    <div class="container">
+    <div class="outer-frame">
+      <div class="welcome">即時空氣品質指標概況</div>
       <div class="header">
-        <label for="station-select">測站名稱：</label>
+
         <select id="station-select">
-          <option value="台北中正" selected>台北中正</option>
+          <option value="基隆市基隆" selected>基隆市基隆</option>
         </select>
         <button id="search-btn">查詢</button>
       </div>
-      <div class="data-display">
-        <div class="data-item">
-          <span>測站名稱：</span><span id="station-name">台北中正</span>
-        </div>
-        <div class="data-item"><span>AQI：</span><span id="aqi">-</span></div>
-        <div class="data-item">
-          <span>PM2.5：</span><span id="pm25">-</span>
-        </div>
-        <div class="data-item"><span>PM10：</span><span id="pm10">-</span></div>
-        <div class="data-item"><span>臭氧：</span><span id="o3">-</span></div>
-        <div class="data-item">
-          <span>出門建議：</span><span id="advice">-</span>
-        </div>
-        <div class="data-item">
-          <span>最新測量時間：</span><span id="latest-time">-</span>
+
+
+        <div class="middle-frame">
+            <div class="inner-frame-left">
+                <div class="data-item">
+
+                  <span id="station-name">基隆市基隆</span>
+                </div>
+                <div class="data-item">
+                  <span id="aqi">0</span>
+                </div>
+
+                <div class="AQI">空氣污染指標AQI</div>
+
+                <div class="data-item">
+                  <!-- <span>最新測量時間：</span> -->
+                  <span id="latest-time">2024/07/17</span>
+                </div>
+              </div>
+
+
+            <div class="inner-frame-right">
+            <div class="inner-frame-right1">
+              <div class="inner-frame-right1in">
+                <div class="data-item">
+                  <div class="data-line1">PM2.5</div>
+
+                  <div class="data-line3"><span id="pm25">0</span></div>
+                  <div class="data-line2">細懸浮微粒 (μg/m3)</div>
+                </div>
+              </div>
+              <div class="inner-frame-right1in">
+                <div class="data-item">
+                  <div class="data-line1">PM10</div>
+
+                  <div class="data-line3"><span id="pm10">0</span></div>
+                  <div class="data-line2">懸浮微粒 (μg/m3)</div>
+                  <!-- <span>PM10：</span><span id="pm10">-</span> -->
+                </div>
+              </div>
+              <div class="inner-frame-right1in">
+                <div class="data-item">
+                  <div class="data-line1">O3</div>
+
+                  <div class="data-line3"><span id="o3">0</span></div>
+                  <div class="data-line2">臭氧 (ppb)</div>
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="inner-frame-right2">
+              <div class="data-item">
+                <span id="advice">良好</span>
+              </div>
+            </div>
+          </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
