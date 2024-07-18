@@ -23,6 +23,8 @@
 將空氣品質相關資訊發送到discord內，測試內容如下:
 ![alt text](image.png)
 
-2.使用model模組化bot.py, 在app.py的主程式中建立Scheduler task 定時執行
+<!-- 2.使用model模組化bot.py, 在app.py的主程式中建立Scheduler task 定時執行 -->
 3.Review 所有組員的程式碼，確認無任何問題
 4.將程式佈署到Render.com，測試網站功能正常
+5.將原本程式使用Scheduler task 定時執行的功能移除，使用AWS服務來處理並發送(Lambda、Event bridge)
+![alt text](image-1.png)
