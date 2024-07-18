@@ -110,7 +110,9 @@ def scheduled_task():
 	)
 
 # Use CronTrigger to set up time in 7:30 am everyday
-trigger = CronTrigger(hour=7, minute=30)
+hr = int(os.environ.get("HOUR", 7))
+min = int(os.environ.get("MIN", 30))
+trigger = CronTrigger(hour=hr, minute=min)
 scheduler.add_job(scheduled_task, trigger)
 
 @app.on_event("startup")
@@ -139,16 +141,16 @@ def send_request():
         time.sleep(300)
 
 def start_background_thread():
-    print("Starting background thread...")  # 确认后台线程启动日志
+    print("Starting background thread...")
     request_thread = threading.Thread(target=send_request)
-    request_thread.daemon = True  # 确保线程在主进程退出时自动退出
+    request_thread.daemon = True 
     request_thread.start()
     print("Background thread started.")
 
 if __name__ == "__main__":
-	print("Starting request thread...")  # 添加日志信息确认线程启动
+	print("Starting request thread...")
 	request_thread = threading.Thread(target=send_request)
-	request_thread.daemon = True  # 确保线程在主进程退出时自动退出
+	request_thread.daemon = True
 	request_thread.start()
 
 	port = int(os.environ.get("PORT", 8000))
