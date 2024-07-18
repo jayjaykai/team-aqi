@@ -4,6 +4,9 @@
 前端:雅君、承妤  
 後端:智凱、弘斌
 
+# 網站畫面
+![alt text](image-2.png)  
+
 # 雅君
 1.初步的index.html、styles.css設置  
 根據討論結果，設置初始的網頁版面，以便後端開發及JavaScript開發的同學進行測試和集成。  
