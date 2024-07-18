@@ -19,6 +19,8 @@
 
 # 弘斌
 1.利用 python requests套件取得政府空氣品質的原始資料  
+使用的api:  
+![alt text](image-3.png)  
 2.根據前端網頁需求資料格式，整理取得資料使用fastAPI 完成 測站列表及測站對應資料兩隻API  
 
 # 智凱:
