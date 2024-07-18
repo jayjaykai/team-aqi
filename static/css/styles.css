@@ -1,0 +1,468 @@
+body {
+  font-family: "標楷體", "Times New Roman", serif;
+  margin: 0;
+  padding: 0;
+  background: url("/static/images/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* 外框 (outer-frame控制面板位置) */
+.outer-frame {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 標題框 (文字) */
+.welcome {
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+
+  font-size: 60px; /* 根據需要調整字體大小 */
+  color: white; /* 設置文字顏色為白色 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 添加陰影效果 */
+}
+
+/* 中框 (middle-frame面板套色) */
+.middle-frame {
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+  width: 1160px;
+  height: 450px;
+
+  background-color: rgb(255, 255, 255, 0.5);
+  border-radius: 40px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  font-size: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.data-display {
+  margin-top: 20px;
+}
+
+#station-select {
+  height: 60px;
+  width: 300px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+#station-select:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.header select {
+  font-family: "標楷體", "Times New Roman", serif;
+  font-size: 30px;
+  text-align: center;
+  color: #333; /* 修改input文字顏色 */
+}
+
+.header button {
+  height: 60px;
+  width: 100px;
+  font-family: "標楷體", "Times New Roman", serif;
+  font-size: 25px;
+  text-align: center;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: rgba(64, 175, 223, 0.542);
+  border: none;
+  font-weight: 800;
+  color: white; /* 修改button文字顏色 */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header button:hover {
+  background-color: rgba(64, 175, 223);
+}
+
+.inner-frame-left {
+  margin-left: 50px;
+  width: 350px;
+  height: 350px;
+
+  background-color: rgb(255, 255, 255, 0.5);
+  border-radius: 40px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+#station-name {
+  margin-left: 10px;
+  margin-right: 10px;
+
+  font-size: 36px;
+  font-weight: 800px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 可選，用來在溢出時顯示省略號 */
+  width: 330px;
+  text-align: center; /* 文字置中 */
+}
+
+#aqi {
+  font-size: 150px;
+}
+.AQI {
+  font-size: 20px;
+}
+
+.inner-frame-right {
+  margin-left: 30px;
+  width: 660px;
+  height: 350px;
+}
+
+.inner-frame-right1 {
+  width: 680px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-frame-right1in {
+  width: calc(620px / 3);
+
+  height: 200px;
+
+  background-color: rgb(255, 255, 255, 0.5);
+  border-radius: 40px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.inner-frame-right2 {
+  margin-top: 30px;
+  width: 680px;
+  height: 120px;
+
+  background-color: rgb(255, 255, 255, 0.5);
+  border-radius: 40px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+/* 為前三個 .inner-frame-right1in 元素設置 margin-right */
+.inner-frame-right1in:not(:last-child) {
+  margin-right: 30px;
+}
+
+.data-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  box-sizing: border-box;
+}
+
+.data-line1 {
+  font-size: 36px;
+  text-align: left;
+}
+
+.data-line2 {
+  font-size: 20px;
+  text-align: left;
+}
+
+#pm10,
+#pm25,
+#o3 {
+  font-size: 80px;
+  font-weight: 800px;
+}
+
+#advice {
+  font-size: 36px;
+  font-weight: 800px;
+}
+
+/* 大螢幕 */
+@media (min-width: 1200px) {
+}
+
+/* 中螢幕 */
+@media (min-width: 540px) and (max-width: 1199px) {
+  /* 中框 (middle-frame面板套色) */
+  .middle-frame {
+    width: 90%;
+    height: 600px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  /* 標題框 (文字) */
+  .welcome {
+    margin-bottom: 30px;
+    font-size: 50px; /* 根據需要調整字體大小 */
+  }
+
+  .inner-frame-left {
+    margin-top: 30px;
+    margin-left: 0px;
+    width: 300px;
+    height: 300px;
+  }
+
+  #aqi {
+    font-size: 120px;
+  }
+
+  .inner-frame-right {
+    margin-top: 30px;
+    margin-left: 0px;
+    width: 420px;
+    height: 260px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .inner-frame-right1 {
+    margin-top: 0px;
+    width: 100%;
+    height: 120px;
+  }
+
+  .inner-frame-right1in {
+    width: 120px;
+
+    height: 120px;
+  }
+
+  .inner-frame-right2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 80%;
+    height: 80px;
+  }
+
+  .data-line1 {
+    font-size: 30px;
+  }
+
+  .data-line2 {
+    font-size: 10px;
+  }
+
+  #pm10,
+  #pm25,
+  #o3 {
+    font-size: 45px;
+    font-weight: 800px;
+  }
+
+  #station-name {
+    width: 260px;
+
+    text-align: center; /* 文字置中 */
+    font-size: 30px;
+    font-weight: 800px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  #advice {
+    font-size: 30px;
+    font-weight: 800px;
+  }
+}
+
+/* 小螢幕 */
+@media (min-width: 360px) and (max-width: 539px) {
+  /* 外框 (outer-frame控制面板位置) */
+  .outer-frame {
+    width: 100%;
+    min-height: 100vh; /* 使外框最小高度為視窗高度 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto; /* 允許垂直滾動 */
+  }
+  /* 為前三個 .inner-frame-right1in 元素設置 margin-right */
+  .inner-frame-right1in:not(:last-child) {
+    margin-bottom: 20px;
+    margin-right: 0px;
+  }
+
+  /* 外框 (outer-frame控制面板位置) */
+  .outer-frame {
+    width: 100%;
+    min-height: 100vh;
+    overflow-y: auto; /* 啟用垂直滾動 */
+  }
+
+  /* 標題框 (文字) */
+  .welcome {
+    margin-top: 50px;
+    font-size: 50px; /* 根據需要調整字體大小 */
+  }
+
+  /* 中框 (middle-frame面板套色) */
+  .middle-frame {
+    width: 90%;
+    min-height: 660px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .data-display {
+    margin-top: 20px;
+  }
+
+  #station-select {
+    height: 60px;
+    width: 200px;
+  }
+
+  .inner-frame-left {
+    margin-top: 20px;
+    margin-left: 0px;
+    width: 250px;
+    height: 250px;
+  }
+
+  #aqi {
+    font-size: 100px;
+  }
+
+  .inner-frame-right {
+    margin-top: 20px;
+    margin-left: 0px;
+    width: 90%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .inner-frame-right1 {
+    margin-top: 0px;
+    width: 150px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .inner-frame-right1in {
+    width: 100px;
+
+    height: 100px;
+  }
+
+  .inner-frame-right2 {
+    margin-top: 0px;
+    width: 80px;
+    height: 350px;
+
+    background-color: rgb(255, 255, 255, 0.5);
+    border-radius: 40px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    color: #333;
+    margin-right: 20px;
+  }
+
+  .data-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  .data-line1,
+  .data-line2,
+  .data-line3 {
+    font-size: 16px;
+  }
+
+  .data-line2 {
+    font-size: 8px;
+  }
+
+  #station-name {
+    width: 230px;
+    font-size: 25px;
+    font-weight: 800px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    text-align: center; /* 文字置中 */
+  }
+  #pm10,
+  #pm25,
+  #o3 {
+    font-size: 30px;
+    font-weight: 800px;
+  }
+
+  #advice {
+    font-size: 25px;
+    font-weight: 800px;
+    writing-mode: vertical-rl; /* 設置文字垂直排列 */
+    text-orientation: upright; /* 保持文字直立 */
+  }
+}
