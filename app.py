@@ -143,7 +143,7 @@ def send_request():
 def start_background_thread():
     print("Starting background thread...")
     request_thread = threading.Thread(target=send_request)
-    request_thread.daemon = True 
+    request_thread.daemon = True
     request_thread.start()
     print("Background thread started.")
 
