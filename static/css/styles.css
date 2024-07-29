@@ -35,14 +35,14 @@ body {
   width: 1160px;
   height: 450px;
 
-  background-color: rgb(255, 255, 255, 0.5);
+  /* background-color: rgb(255, 255, 255, 0.5); */
   border-radius: 40px;
   box-sizing: border-box;
 
   display: flex;
   justify-content: left;
   align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); */
 }
 
 .header {
@@ -60,8 +60,7 @@ body {
 #station-select {
   height: 60px;
   width: 300px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.5);
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -76,26 +75,6 @@ body {
   font-size: 30px;
   text-align: center;
   color: #333; /* 修改input文字顏色 */
-}
-
-.header button {
-  height: 60px;
-  width: 100px;
-  font-family: "標楷體", "Times New Roman", serif;
-  font-size: 25px;
-  text-align: center;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  background-color: rgba(64, 175, 223, 0.542);
-  border: none;
-  font-weight: 800;
-  color: white; /* 修改button文字顏色 */
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.header button:hover {
-  background-color: rgba(64, 175, 223);
 }
 
 .inner-frame-left {
@@ -172,7 +151,7 @@ body {
   height: 120px;
 
   background-color: rgb(255, 255, 255, 0.5);
-  border-radius: 40px;
+  border-radius: 20px;
   box-sizing: border-box;
 
   display: flex;
@@ -219,17 +198,165 @@ body {
   font-weight: 800px;
 }
 
+/* map */
+.counties {
+  fill: #ffa1a1;
+  stroke: #fff;
+  stroke-width: 0.5px;
+}
+/* .counties:hover {
+  fill: #aaa;
+} */
+.county-borders {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.5px;
+}
+.station-marker {
+  cursor: pointer;
+  fill: blue;
+  fill-opacity: 0.5;
+}
+.station-marker:hover {
+  fill-opacity: 1;
+}
+.station-label {
+  font-size: 12px;
+  font-weight: bold;
+  text-anchor: middle;
+  opacity: 0;
+  text-shadow: 1px 1px 0 white,
+    /* 向右下角偏移1px的白色陰影 */ -1px -1px 0 white,
+    /* 向左上角偏移1px的白色陰影 */ 1px -1px 0 white,
+    /* 向右上角偏移1px的白色陰影 */ -1px 1px 0 white; /* 向左下角偏移1px的白色陰影 */
+}
+
 /* 大螢幕 */
-@media (min-width: 1200px) {
+@media (min-width: 960px) {
+}
+
+.middle-frame {
+  width: auto;
+  height: 600px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+#app {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.middle-frame-in {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* 標題框 (文字) */
+.welcome {
+  margin-bottom: 30px;
+  font-size: 50px; /* 根據需要調整字體大小 */
+}
+
+.inner-frame-left {
+  margin-top: 30px;
+  margin-left: 0px;
+  width: 300px;
+  height: 300px;
+}
+
+#aqi {
+  font-size: 120px;
+}
+
+.inner-frame-right {
+  margin-top: 30px;
+  margin-left: 0px;
+  width: 420px;
+  height: 260px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.inner-frame-right1 {
+  margin-top: 0px;
+  width: 100%;
+  height: 120px;
+}
+
+.inner-frame-right1in {
+  width: 120px;
+
+  height: 120px;
+}
+
+.inner-frame-right2 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+  height: 80px;
+}
+
+.data-line1 {
+  font-size: 30px;
+}
+
+.data-line2 {
+  font-size: 10px;
+}
+
+#pm10,
+#pm25,
+#o3 {
+  font-size: 45px;
+  font-weight: 800px;
+}
+
+#station-name {
+  width: 260px;
+
+  text-align: center; /* 文字置中 */
+  font-size: 30px;
+  font-weight: 800px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#advice {
+  font-size: 30px;
+  font-weight: 800px;
 }
 
 /* 中螢幕 */
-@media (min-width: 540px) and (max-width: 1199px) {
-  /* 中框 (middle-frame面板套色) */
+@media (min-width: 540px) and (max-width: 959px) {
+  #app svg {
+    display: none; /* 隱藏SVG元素，即地圖 */
+  }
+
   .middle-frame {
-    width: 90%;
+    width: auto;
     height: 600px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  #app {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .middle-frame-in {
+    margin-right: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -279,7 +406,7 @@ body {
   .inner-frame-right2 {
     margin-top: 30px;
     margin-bottom: 30px;
-    width: 80%;
+    width: 100%;
     height: 80px;
   }
 
@@ -315,6 +442,9 @@ body {
 
 /* 小螢幕 */
 @media (min-width: 360px) and (max-width: 539px) {
+  #app svg {
+    display: none; /* 隱藏SVG元素，即地圖 */
+  }
   /* 外框 (outer-frame控制面板位置) */
   .outer-frame {
     width: 100%;
@@ -390,7 +520,6 @@ body {
   }
 
   .inner-frame-right1 {
-    margin-top: 0px;
     width: 150px;
     height: 350px;
     display: flex;
@@ -406,12 +535,11 @@ body {
   }
 
   .inner-frame-right2 {
-    margin-top: 0px;
     width: 80px;
-    height: 350px;
+    height: 340px;
 
     background-color: rgb(255, 255, 255, 0.5);
-    border-radius: 40px;
+    border-radius: 20px;
     box-sizing: border-box;
 
     display: flex;
